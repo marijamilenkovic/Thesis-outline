@@ -1,0 +1,209 @@
+%%
+%% This is file `crmath.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% crmath.dtx  (with options: `package')
+%% 
+%%
+%% crmath package
+%% Copyright (c) 2013 Christoph Reller
+%%
+%% This program is free software; you can redistribute it and/or modify
+%% it under the terms of the GNU General Public License as published by
+%% the Free Software Foundation; either version 2 of the License, or
+%% (at your option) any later version.
+%%
+%% This program is distributed in the hope that it will be useful,
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%% GNU General Public License for more details.
+%%
+%% You should have received a copy of the GNU General Public License
+%% along with this program; if not, write to the Free Software
+%% Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+%%
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{crmath}
+    [2014/01/21 v1.4 Math notation]
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{bm}
+\RequirePackage{ifthen}
+\newif\iflight
+\lightfalse
+\DeclareOption{light}{\lighttrue}
+\newif\ifnoMnSymbol
+\noMnSymbolfalse
+\DeclareOption{noMnSymbol}{\noMnSymboltrue}
+\ProcessOptions\relax
+\providecommand{\eqdef}{\triangleq}
+\providecommand{\eqmust}{\ensuremath{\stackrel{!}{=}}}
+\providecommand{\simiid}{\overset{\scriptscriptstyle\mathsf{iid}}{\sim}}
+\providecommand{\markov}{\textnormal{\mbox{$\multimap\hspace{-0.73ex}-
+      \hspace{-2ex}-$}}}
+\providecommand{\set}[1]{\ensuremath{\mathcal{#1}}}
+\providecommand{\sete}{\ensuremath{\varnothing}}
+\providecommand{\Nn}{\ensuremath{\mathbb{N}}}
+\providecommand{\Nnz}{\ensuremath{\Nn_0}}
+\providecommand{\Zz}{\ensuremath{\mathbb{Z}}}
+\providecommand{\Zzp}{\ensuremath{\Zz_{>0}}}
+\providecommand{\Zzzp}{\ensuremath{\Zz_{\geq 0}}}
+\providecommand{\Qq}{\ensuremath{\mathbb{Q}}}
+\providecommand{\Qqp}{\ensuremath{\Qq_{>0}}}
+\providecommand{\Qqzp}{\ensuremath{\Qq_{\geq 0}}}
+\providecommand{\Rr}{\ensuremath{\mathbb{R}}}
+\providecommand{\Rrp}{\ensuremath{\Rr_{>0}}}
+\providecommand{\Rrzp}{\ensuremath{\Rr_{\geq 0}}}
+\providecommand{\Cc}{\ensuremath{\mathbb{C}}}
+\providecommand{\Ss}{\ensuremath{\mathbb{S}}}
+\providecommand{\Ssp}{\ensuremath{\Ss_{\succ 0}}}
+\providecommand{\Sszp}{\ensuremath{\Ss_{\succeq 0}}}
+\DeclareRobustCommand{\ve}[1]{\ensuremath{\iflight#1\else\bm{#1}\fi}}
+\DeclareRobustCommand{\ma}[1]{\ensuremath{\iflight#1\else\mathbf{#1}\fi}}
+\providecommand{\vei}{\ensuremath{\iflight 1\else\bm{\mathit{1}}\fi}}
+\providecommand{\vez}{\ensuremath{\iflight 0\else\bm{\mathit{0}}\fi}}
+\providecommand{\mai}{\ma{I}}
+\providecommand{\maz}{\ma{0}}
+\providecommand{\T}{{\mspace{-0.7mu}\mathsf{T}}}
+\providecommand{\iT}{{-\mathsf{T}}}
+\renewcommand{\H}{{\mspace{-1mu}\mathsf{H}}}
+\providecommand{\iH}{{-\mathsf{H}}}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\angl}{\angle}
+\providecommand{\ccj}[1]{\overline{#1}}
+\DeclareMathOperator{\prob}{\mathsf{P}}
+\providecommand{\dif}{\mathrm{d}}
+\DeclareMathOperator{\expect}{\mathsf{E}}
+\DeclareMathOperator{\var}{\mathsf{VAR}}
+\DeclareMathOperator{\covar}{\mathsf{COV}}
+\DeclareMathOperator{\entro}{\mathsf{H}}
+\DeclareMathOperator{\difent}{\mathsf{h}}
+\DeclareMathOperator{\diver}{\mathsf{D}}
+\DeclareMathOperator{\infor}{\mathsf{I}}
+\DeclareMathOperator{\aff}{aff}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\inter}{int}
+\DeclareMathOperator{\relint}{relint}
+\DeclareMathOperator{\clos}{clos}
+\DeclareMathOperator{\bound}{bound}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\cvect}{cvect}
+\DeclareMathOperator{\rvect}{rvect}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\trace}{tr}
+\providecommand{\determinant}[2][]{\abs[#1]{#2}}
+\DeclareMathOperator{\rangespace}{\mathcal{R}}
+\DeclareMathOperator{\nullspace}{\mathcal{N}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\step}{step}
+\DeclareMathOperator{\sign}{sgn}
+\DeclareMathOperator{\grad}{\nabla\!}
+\DeclareMathOperator{\rect}{rect}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\gauss}{\mathcal{N}}
+\DeclareMathOperator{\lot}{log_{\scriptscriptstyle 2}}
+\DeclareMathOperator{\rotm}{rotm}
+\newcommand{\onep}[4][]{\ifthenelse{\equal{#1}{}}
+  {\mathopen{\left#2\vphantom{#4}\right.\mspace{-2.1mu}}#4%
+    \mathclose{\mspace{-2.1mu}\left.\vphantom{#4}\right#3}}
+  {\ifthenelse{\equal{#1}{norm}}
+    {#2 #4 #3}
+    {\csname#1l\endcsname#2 #4\csname#1r\endcsname#3}}}
+\newcommand{\@inmiddle}[1]{\mspace{-2mu}\mathinner{#1}\mspace{-2mu}}
+\newcommand{\twop}[6][]{\ifthenelse{\equal{#1}{}}
+  {\mathopen{\left#2\vphantom{{#5}{#6}}\right.\mspace{-2.1mu}}%
+    #5{\@inmiddle{\,\left#3\vphantom{{#5}{#6}}\right.\mspace{0.8mu}}}#6%
+    \mathclose{\mspace{-2.1mu}\left.\vphantom{{#5}{#6}}\right#4}}
+  {\ifthenelse{\equal{#1}{norm}}
+    {#2 #5\@inmiddle{#3} #6 #4}
+    {\csname#1l\endcsname#2 #5 \@inmiddle{\csname#1\endcsname#3} #6
+      \csname#1r\endcsname#4}}}
+\providecommand{\paren}[2][]{\onep[#1]{(}{)}{#2}}
+\providecommand{\brac}[2][]{\onep[#1]{[}{]}{#2}}
+\providecommand{\Brac}[2][]{\onep[#1]{\{}{\}}{#2}}
+\providecommand{\abs}[2][]{\onep[#1]{\lvert}{\rvert}{#2}}
+\providecommand{\norm}[2][]{\onep[#1]{\lVert}{\rVert}{#2}}
+\providecommand{\ip}[3][]{\onep[#1]{\langle}{\rangle}{{#2}\mathpunct{,}{#3}}}
+\providecommand{\floor}[2][]{\onep[#1]{\lfloor}{\rfloor}
+  {\mspace{-1mu}#2\mspace{-1mu}}}
+\providecommand{\ceil}[2][]{\onep[#1]{\lceil}{\rceil}
+  {\mspace{-1mu}#2\mspace{-1mu}}}
+\providecommand{\evalat}[2][]{\onep[#1]{.}{\rvert}{#2}}
+\providecommand{\given}[3][]{\twop[#1]{.}{\vert}{.}{#2}{#3}}
+\providecommand{\pgiven}[3][]{\twop[#1]{(}{\vert}{)}{#2}{#3}}
+\providecommand{\bgiven}[3][]{\twop[#1]{[}{\vert}{]}{#2}{#3}}
+\providecommand{\Bgiven}[3][]{\twop[#1]{\{}{\vert}{\}}{#2}{#3}}
+\providecommand{\ggiven}[3][]{\twop[#1]{.}{\Vert}{.}{#2}{#3}}
+\providecommand{\pggiven}[3][]{\twop[#1]{(}{\Vert}{)}{#2}{#3}}
+\providecommand{\bggiven}[3][]{\twop[#1]{[}{\Vert}{]}{#2}{#3}}
+\providecommand{\Bggiven}[3][]{\twop[#1]{\{}{\Vert}{\}}{#2}{#3}}
+\ifnoMnSymbol\else\DeclareFontFamily{U}{MnSymbolA}{}
+\DeclareSymbolFont{MnSyA}{U}{MnSymbolA}{m}{n}
+\DeclareFontShape{U}{MnSymbolA}{m}{n}{
+<-6> MnSymbolA5
+<6-7> MnSymbolA6
+<7-8> MnSymbolA7
+<8-9> MnSymbolA8
+<9-10> MnSymbolA9
+<10-12> MnSymbolA10
+<12-> MnSymbolA12}{}
+\DeclareMathSymbol{\smallrightarrow}{\mathrel}{MnSyA}{0}
+\DeclareMathSymbol{\smallleftarrow}{\mathrel}{MnSyA}{2}
+\DeclareMathSymbol{\smallleftrightarrow}{\mathrel}{MnSyA}{16}
+\DeclareMathSymbol{\smalluparrow}{\mathrel}{MnSyA}{1}
+\DeclareMathSymbol{\smalldownarrow}{\mathrel}{MnSyA}{3}
+\newcommand{\smallrightarrowfill@}{\arrowfill@\relbar\relbar\smallrightarrow}
+\newcommand{\smallleftarrowfill@}{\arrowfill@\smallleftarrow\relbar\relbar}
+\newcommand{\smallleftrightarrowfill@}{\arrowfill@\smallleftarrow\relbar\smallrightarrow}
+\renewcommand{\overrightarrow}{\mathpalette{\overarrow@\smallrightarrowfill@}}
+\renewcommand{\overleftarrow}{\mathpalette{\overarrow@\smallleftarrowfill@}}
+\renewcommand{\overleftrightarrow}{\mathpalette{\overarrow@\smallleftrightarrowfill@}}\fi
+\providecommand{\msgf}[2]{\protect\overrightarrow{#1}_{\mspace{-3mu}#2}}
+\providecommand{\mf}[1]{\protect\overrightarrow{m}_{\mspace{1mu}#1}}
+\providecommand{\vmf}[1]{\protect\overrightarrow{\ve{m}}_{\mspace{-0mu}#1}}
+\providecommand{\Vf}[1]{\protect\overrightarrow{V}_{\mspace{-4mu}#1}}
+\providecommand{\mVf}[1]{\protect\overrightarrow{\ma{V}}_{\mspace{-4mu}#1}}
+\providecommand{\Wf}[1]{\protect\overrightarrow{W}_{\mspace{-4mu}#1}}
+\providecommand{\mWf}[1]{\protect\overrightarrow{\ma{W}}_{\mspace{-4mu}#1}}
+\providecommand{\muf}[1]{\protect\overrightarrow{\mu}_{\mspace{-4mu}#1}}
+\providecommand{\sigmaf}[1]{\protect\overrightarrow{\sigma}_{\mspace{-4mu}#1}}
+\providecommand{\gammaf}[1]{\protect\overrightarrow{\gamma}_{\mspace{-4mu}#1}}
+\providecommand{\betaf}[1]{\protect\overrightarrow{\beta}_{\mspace{-4mu}#1}}
+
+\providecommand{\msgb}[2]{\protect\overleftarrow{#1}_{\mspace{-3mu}#2}}
+\providecommand{\mb}[1]{\protect\overleftarrow{m}_{\mspace{1mu}#1}}
+\providecommand{\vmb}[1]{\protect\overleftarrow{\ve{m}}_{\mspace{-0mu}#1}}
+\providecommand{\Vb}[1]{\protect\overleftarrow{V}_{\mspace{-4mu}#1}}
+\providecommand{\mVb}[1]{\protect\overleftarrow{\ma{V}}_{\mspace{-4mu}#1}}
+\providecommand{\Wb}[1]{\protect\overleftarrow{W}_{\mspace{-4mu}#1}}
+\providecommand{\mWb}[1]{\protect\overleftarrow{\ma{W}}_{\mspace{-4mu}#1}}
+\providecommand{\mub}[1]{\protect\overleftarrow{\mu}_{\mspace{-4mu}#1}}
+\providecommand{\sigmab}[1]{\protect\overleftarrow{\sigma}_{\mspace{-4mu}#1}}
+\providecommand{\gammab}[1]{\protect\overleftarrow{\gamma}_{\mspace{-4mu}#1}}
+\providecommand{\betab}[1]{\protect\overleftarrow{\beta}_{\mspace{-4mu}#1}}
+
+\providecommand{\msgfb}[2]{\protect\overleftrightarrow{#1}_{\mspace{-3mu}#2}}
+\providecommand{\mfb}[1]{\protect\overleftrightarrow{m}_{\mspace{1mu}#1}}
+\providecommand{\vmfb}[1]{\protect\overleftrightarrow{\ve{m}}_{\mspace{-0mu}#1}}
+\providecommand{\Vfb}[1]{\protect\overleftrightarrow{V}_{\mspace{-4mu}#1}}
+\providecommand{\mVfb}[1]{\protect\overleftrightarrow{\ma{V}}_{\mspace{-4mu}#1}}
+\providecommand{\Wfb}[1]{\protect\overleftrightarrow{W}_{\mspace{-4mu}#1}}
+\providecommand{\mWfb}[1]{\protect\overleftrightarrow{\ma{W}}_{\mspace{-4mu}#1}}
+\providecommand{\mufb}[1]{\protect\overleftrightarrow{\mu}_{\mspace{-4mu}#1}}
+\providecommand{\sigmafb}[1]{\protect\overleftrightarrow{\sigma}_{\mspace{-4mu}#1}}
+\providecommand{\gammafb}[1]{\protect\overleftrightarrow{\gamma}_{\mspace{-4mu}#1}}
+\providecommand{\betafb}[1]{\protect\overleftrightarrow{\beta}_{\mspace{-4mu}#1}}
+
+\providecommand{\mV}[1]{\protect{\ma{V}}_{\mspace{\iflight-0mu\else-3.5mu\fi}#1}}
+\providecommand{\mW}[1]{\protect{\ma{W}}_{\mspace{\iflight-0mu\else-3.5mu\fi}#1}}
+\providecommand{\fromto}[2]{#1#2#1}
+\providecommand{\til}{\fromto{,}{\dotsc}}
+\endinput
+%%
+%% End of file `crmath.sty'.
